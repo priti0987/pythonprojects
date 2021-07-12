@@ -1,6 +1,6 @@
 Feature: Forgot Sign-on Password for Mongolian Customer
 
-  Background: Comman Steps
+  Background: Common Steps
     Given I launch the Khan Bank application
     When I click on Forgot Password link
 
