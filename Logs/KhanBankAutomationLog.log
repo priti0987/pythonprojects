@@ -1,25 +1,16 @@
-12-Jul-21 14:19:29 - ====== WebDriver manager ======
-12-Jul-21 14:19:30 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-12-Jul-21 14:19:31 - *****Driver Initialized*****
-12-Jul-21 14:19:48 - *****Homepage title matches*****
-12-Jul-21 14:19:48 - *****Unable to click on Forgot Password Link******
-12-Jul-21 14:19:49 - *****Homepage title matches*****
-12-Jul-21 14:19:53 - Browser is closed
-12-Jul-21 14:19:53 - ====== WebDriver manager ======
-12-Jul-21 14:19:53 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-12-Jul-21 14:19:55 - *****Driver Initialized*****
-12-Jul-21 14:20:11 - *****Homepage title matches*****
-12-Jul-21 14:20:11 - *****Unable to click on Forgot Password Link******
-12-Jul-21 14:20:15 - Warning message - Select Password Type is displayed
-12-Jul-21 14:20:19 - Browser is closed
-rya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-*****Driver Initialized*****
-*****Driver Initialized*****
-*****Homepage title matches*****
-*****Homepage title matches*****
-*****Unable to click on Forgot Password Link******
-*****Unable to click on Forgot Password Link******
-Warning message - Select Password Type is displayed
-Warning message - Select Password Type is displayed
-Browser is closed
+12-Jul-21 14:43:25 - ====== WebDriver manager ======
+12-Jul-21 14:43:26 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+12-Jul-21 14:43:27 - *****Driver Initialized*****
+12-Jul-21 14:43:49 - *****Homepage title matches*****
+12-Jul-21 14:43:49 - *****Unable to click on Forgot Password Link******
+12-Jul-21 14:43:50 - *****Homepage title matches*****
+12-Jul-21 14:43:54 - Browser is closed
+12-Jul-21 14:43:54 - ====== WebDriver manager ======
+12-Jul-21 14:43:54 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+12-Jul-21 14:43:55 - *****Driver Initialized*****
+12-Jul-21 14:44:14 - *****Homepage title matches*****
+12-Jul-21 14:44:14 - *****Unable to click on Forgot Password Link******
+12-Jul-21 14:44:17 - Warning message - Select Password Type is displayed
+12-Jul-21 14:44:21 - Browser is closed
+s displayed
 Browser is closed
