@@ -1,16 +1,31 @@
-12-Jul-21 14:43:25 - ====== WebDriver manager ======
-12-Jul-21 14:43:26 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-12-Jul-21 14:43:27 - *****Driver Initialized*****
-12-Jul-21 14:43:49 - *****Homepage title matches*****
-12-Jul-21 14:43:49 - *****Unable to click on Forgot Password Link******
-12-Jul-21 14:43:50 - *****Homepage title matches*****
-12-Jul-21 14:43:54 - Browser is closed
-12-Jul-21 14:43:54 - ====== WebDriver manager ======
-12-Jul-21 14:43:54 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-12-Jul-21 14:43:55 - *****Driver Initialized*****
-12-Jul-21 14:44:14 - *****Homepage title matches*****
-12-Jul-21 14:44:14 - *****Unable to click on Forgot Password Link******
-12-Jul-21 14:44:17 - Warning message - Select Password Type is displayed
-12-Jul-21 14:44:21 - Browser is closed
-s displayed
+12-Jul-21 15:09:32 - ====== WebDriver manager ======
+12-Jul-21 15:09:33 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+12-Jul-21 15:09:34 - *****Driver Initialized*****
+12-Jul-21 15:09:47 - *****Homepage title matches*****
+12-Jul-21 15:09:47 - *****Unable to click on Forgot Password Link******
+12-Jul-21 15:09:48 - *****Homepage title matches*****
+12-Jul-21 15:09:52 - Browser is closed
+12-Jul-21 15:09:52 - ====== WebDriver manager ======
+12-Jul-21 15:09:52 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+12-Jul-21 15:09:53 - *****Driver Initialized*****
+12-Jul-21 15:10:06 - *****Homepage title matches*****
+12-Jul-21 15:10:06 - *****Unable to click on Forgot Password Link******
+12-Jul-21 15:10:09 - Warning message - Select Password Type is displayed
+12-Jul-21 15:10:13 - Browser is closed
+12-Jul-21 15:10:13 - ====== WebDriver manager ======
+12-Jul-21 15:10:14 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+12-Jul-21 15:10:15 - *****Driver Initialized*****
+12-Jul-21 15:10:33 - *****Homepage title matches*****
+ Forgot Password Link******
+Warning message - Select Password Type is displayed
+Warning message - Select Password Type is displayed
 Browser is closed
+Browser is closed
+====== WebDriver manager ======
+====== WebDriver manager ======
+Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
+*****Driver Initialized*****
+*****Driver Initialized*****
+*****Homepage title matches*****
+*****Homepage title matches*****
