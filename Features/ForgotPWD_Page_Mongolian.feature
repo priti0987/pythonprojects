@@ -1,11 +1,16 @@
-Feature: Forgot Sign-on Password for Mongolian Customer
+Feature: Forgot Password Page Validation for Mongolian Customer
 
   Background: Common Steps
     Given I launch the Khan Bank application
     When I click on Forgot Password link
 
-  Scenario: Verifying if Forgot Password Page for Mongolian Customer is displayed
+  Scenario: Verifying if Forgot Password Page for Mongolian Customer is displayed when user selects login password
     And I select the login password to be reset
+    Then I should be displayed with the Forgot password page for Mongolian Customer
+    And I close the browser
+
+  Scenario: Verifying if Forgot Password Page for Mongolian Customer is displayed when user selects transaction password
+    And I select the transaction password to be reset
     Then I should be displayed with the Forgot password page for Mongolian Customer
     And I close the browser
 
@@ -13,6 +18,8 @@ Feature: Forgot Sign-on Password for Mongolian Customer
     And I click on Continue button without selecting a password
     Then Warning message should be displayed
     And I close the browser
+
+
 
 
 

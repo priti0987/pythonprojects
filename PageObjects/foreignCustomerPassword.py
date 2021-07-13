@@ -1,4 +1,4 @@
-class foreignCustomerPassword:
+class ForeignCustomerPassword:
     text_username_id = "customerAuthForm_registrationNumber"
     text_passportNumber_id = "customerAuthForm_registrationNumber"
     button_continue_xpath = "//button[@type='submit']"
@@ -7,10 +7,10 @@ class foreignCustomerPassword:
         self.driver = driver
 
     def setUsername(self,username):
-        self.driver.find_element_by(self.text_username_id).send_keys(username)
+        self.driver.find_element_by_id(self.text_username_id).send_keys(username)
 
-    def setPassword(self,password):
-        self.driver.find_element_by(self.text_passportNumber_id).send_keys(password)
+    def setPassportNumber(self,passportNumber):
+        self.driver.find_element_by_id(self.text_passportNumber_id).send_keys(passportNumber)
 
     def clickOnContinue(self):
-        self.driver.find_element_by(self.button_continue_xpath).click()
+        self.driver.find_element_by_xpath(self.button_continue_xpath).click()

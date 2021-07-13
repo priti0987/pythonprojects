@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 class SelectPwd:
     title_selectPasswordType_className = "ant-page-header-heading-title"
     radioButton_loginPassword_xpath = "//input[@value='SPWD']"
@@ -5,6 +6,8 @@ class SelectPwd:
     button_continue_xpath = "//button[@type='submit']"
     link_backArrow_xpath = "//span[@class='anticon anticon-arrow-left']"
     button_back_xpath = "//button[@class='ant-btn ant-btn-lg ant-btn-block']"
+    message_selectWarning_xpath = "//div[@role='alert']"
+
 
 
     def __init__(self,driver):
@@ -24,6 +27,11 @@ class SelectPwd:
 
     def clickOnBackButton(self):
         self.driver.find_element_by_class_name(self.button_back_xpath).click()
+
+    def elementLoginPassword(self):
+        self.driver.find_element_by_xpath(self.radioButton_loginPassword_xpath)
+
+
 
 
 
