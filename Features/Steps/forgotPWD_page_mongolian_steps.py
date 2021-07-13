@@ -31,7 +31,7 @@ def step_impl(context):
             assert True
             context.driver.save_screenshot(".\\Screenshots\\"+"LoginPage.png")
             allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage",attachment_type = AttachmentType.PNG)
-            myLogger.info("*****Homepage title matches*****")
+            myLogger.info("*****Homepage title matches****")
         else:
             assert False
             context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
