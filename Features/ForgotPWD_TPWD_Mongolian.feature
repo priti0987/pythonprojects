@@ -1,9 +1,9 @@
-Feature: Forgot Password Page Validation for Mongolian Customer
+Feature: Forgot Password - Transaction Password for Mongolian Customer
 
   Background: Common Steps
     Given I launch the Khan Bank application
     When I click on Forgot Password link
-    And I select the login password to be reset
+    And I select the transaction password to be reset
     Then I should be displayed with the Forgot password page for Mongolian Customer
     When I enter username and registration number
     And I click on Continue button
