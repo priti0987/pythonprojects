@@ -1,28 +1,8 @@
-14-Jul-21 09:21:10 - ====== WebDriver manager ======
-14-Jul-21 09:21:11 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-14-Jul-21 09:21:12 - *****Driver Initialized*****
-14-Jul-21 09:21:38 - *****Homepage title matches****
-14-Jul-21 09:21:38 - *****Expected Element Login Password Radio Button Found*****
-14-Jul-21 09:21:39 - *****Expected Element Username Text field Found*****
-14-Jul-21 09:21:50 - ====== WebDriver manager ======
-14-Jul-21 09:21:51 - Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-14-Jul-21 09:21:52 - *****Driver Initialized*****
-14-Jul-21 09:22:05 - *****Unable to launch the application
-utton Found*****
-*****Expected Element Login Password Radio Button Found*****
-*****Expected Element Login Password Radio Button Found*****
-*****Expected Element Username Text field Found*****
-*****Expected Element Username Text field Found*****
-*****Expected Element Username Text field Found*****
-====== WebDriver manager ======
-====== WebDriver manager ======
-====== WebDriver manager ======
-Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-Driver [C:\Users\Ishwarya Manoj\.wdm\drivers\edgedriver\win64\91.0.864.67\msedgedriver.exe] found in cache
-*****Driver Initialized*****
-*****Driver Initialized*****
-*****Driver Initialized*****
-*****Unable to launch the application
-*****Unable to launch the application
-*****Unable to launch the application
+15-Jul-21 16:22:55 - *****Driver Initialized*****
+15-Jul-21 16:23:05 - *****Homepage title matches*****
+15-Jul-21 16:23:08 - *****Expected Element for sign up page Found*****
+**Homepage title matches*****
+*****Homepage title matches*****
+*****Expected Element for sign up page Found*****
+*****Expected Element for sign up page Found*****
+*****Expected Element for sign up page Found*****

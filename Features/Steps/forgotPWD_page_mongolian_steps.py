@@ -1,12 +1,14 @@
 import time
-
+import easygui
 import allure
 from allure_commons.types import AttachmentType
 from behave import *
 from selenium import webdriver
+from webdriver_manager.firefox import GeckoDriverManager
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from webdriver_manager.microsoft import *
 from selenium.webdriver.common.by import By
 from PageObjects.login import Login
 from PageObjects.selectPassword import SelectPwd
@@ -15,6 +17,70 @@ from Utilities.constants import Constants
 from Utilities.customLogger import LogGen
 
 myLogger = LogGen.logGen()
+
+@given(u'I launch the Khan Bank application in Ie')
+def step_impl(context):
+    context.driver = webdriver.Ie()
+    myLogger.info("*****Driver Initialized*****")
+    global login_page
+    login_page = Login(context.driver)
+    easygui.msgbox("loginIE")
+    try:
+
+        context.driver.get(Constants.RETAIL_URL)
+        context.driver.maximize_window()
+        login_page.clearDomain()
+        login_page.setRetailDomain()
+        login_page.clickOnDomainButton()
+        if context.driver.title == Constants.RETAIL_HOMEPAGE_TITLE:
+            assert True
+            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage Displayed",
+                          attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Homepage title matches****")
+        else:
+            assert False
+            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage Not Displayed",
+                          attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Homepage title does not match*****")
+    except:
+        #myLogger.exception("Error occured during execution: %s", e.message)
+        myLogger.info("*****Unable to launch the application")
+
+
+@given(u'I launch the Khan Bank application In Firefox')
+def Firefox(context):
+    context.driver = webdriver.Firefox()
+    myLogger.info("*****Driver Initialized*****")
+    #easygui.msgbox("loginFirefox")
+    global login_page
+    login_page = Login(context.driver)
+
+    try:
+        context.driver.get(Constants.RETAIL_URL)
+        context.driver.maximize_window()
+        #easygui.msgbox("Firefox")
+        login_page.clearDomain()
+        login_page.setRetailDomain()
+        login_page.clickOnDomainButton()
+        #easygui.msgbox("loginFirefoxDomain")
+
+        if context.driver.title == Constants.RETAIL_HOMEPAGE_TITLE:
+            assert True
+            context.driver.save_screenshot(".\\Screenshots\\"+"LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage",attachment_type = AttachmentType.PNG)
+            myLogger.info("*****Homepage title matches*****")
+        else:
+            assert False
+            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage",
+                          attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Homepage title does not match*****")
+    except:
+        #myLogger.exception("Error occured during execution: %s", e.message)
+        myLogger.info("*****Unable to launch the application")
+
 
 @given(u'I launch the Khan Bank application')
 def step_impl(context):
@@ -26,8 +92,7 @@ def step_impl(context):
 
         context.driver.get(Constants.BASE_URL)
         context.driver.maximize_window()
-        login_page.clearDomain()
-        login_page.setMongolianDomain()
+        login_page.setDomain()
         login_page.clickOnDomainButton()
 
         if context.driver.title == Constants.HOMEPAGE_TITLE:
@@ -45,6 +110,7 @@ def step_impl(context):
     except:
         #myLogger.exception("Error occured during execution: %s", e.message)
         myLogger.info("*****Unable to launch the application")
+
 
 @when(u'I click on Forgot Password link')
 def step_impl(context):
