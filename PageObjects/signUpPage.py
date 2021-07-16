@@ -74,7 +74,6 @@ class Signup:
         while i <=36 :
             action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
             data3 = self.driver.find_element_by_xpath("//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
-
             if data3.text == "Г":
                 break
             i+=1
