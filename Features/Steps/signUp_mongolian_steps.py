@@ -53,10 +53,9 @@ def Signup1(context):
 def step_impl(context):
     global signup_page
     signup_page = Signup(context.driver)
-
-    signup_page.selectDropdown1()
-
-    signup_page.selectDropdown2()
+    #signup_page.selectDropdown1()
+    #signup_page.selectDropdown2()
+    signup_page.MyDropwon()
     signup_page.enterReg_number()
     signup_page.enterEmailid()
     signup_page.enterPhone_number()

@@ -1,11 +1,15 @@
 import time
 import xlrd
 from behave import *
+from docutils.nodes import label
 from selenium import webdriver
 import easygui
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import *
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class Signup:
 
@@ -31,29 +35,64 @@ class Signup:
         action = ActionChains(self.driver)
         element = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[1]")
         action.move_to_element(element).click().perform()
-        data = self.driver.find_elements_by_xpath("//div[@class='ant-select-item-option-content']")
-        Char1 = "A"
-        for regchar1 in data:
-            
-            elementValue = regchar1.text
-            time.sleep(1)
-            if elementValue is Char1:
-                regchar1.click()
+
+        Char1 = "Ё"
+        for i in range(35):
+            action.send_keys(Keys.DOWN + Keys.ENTER).perform()
+
+            data = self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']//ancestor::div[@class='ant-select-selector'][1]")
+            #easygui.msgbox(data.text)
+            if data.text == Char1:
                 break
+            #action.send_keys(Keys.DOWN).perform()
+
+    def MyDropwon(self, goto=None):
+        action2 = ActionChains(self.driver)
+        element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[1]")
+        action2.move_to_element(element2).click().perform()
+        time.sleep(2)
+        #self.driver.find_element_by_xpath("//*[text()='A']").click()
+        i=1
+        while i <=36 :
+            action2.send_keys(Keys.DOWN+Keys.ENTER).perform()
+            #easygui.msgbox("down?")
+            data = self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']")
+            if data.text == "Б":
+                break
+            i+=1
+        #*********************************Second dropdown
+        action3 = ActionChains(self.driver)
+        element3 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
+        action3.move_to_element(element3).click().perform()
+        time.sleep(3)
+
+        #self.driver.find_element_by_xpath("//*[text()='A']").click()
+        #self.driver.find_element_by_xpath("//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected']//div[@class='ant-select-item-option-content'][contains(text(),'Г')]").click()
+        #action3.send_keys(Keys.DOWN +Keys.DOWN + Keys.ENTER).perform()
+        # easygui.msgbox("down?")
+        i=1
+        while i <=36 :
+            action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
+            data3 = self.driver.find_element_by_xpath("//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
+
+            if data3.text == "Г":
+                break
+            i+=1
+
 
     def selectDropdown2(self):
         action2 = ActionChains(self.driver)
         element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
         action2.move_to_element(element2).click().perform()
-        data2 = self.driver.find_elements_by_xpath("//div[@class='ant-select-item-option-content']")
-        Char2 = "Г"
-        for regchar2 in data2:
-            elementValue2 = regchar2.text
-            easygui.msgbox(elementValue2)
-            if elementValue2 is Char2:
-                easygui.msgbox("inside2if")
-                regchar2.click()
+        Char2 = "Д"
+        for i in range(35):
+            action2.send_keys(Keys.DOWN ).perform()
+            data2 = self.driver.find_element_by_xpath("//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
+            #easygui.msgbox(data2.text)
+            if data2.text == Char2:
+                #easygui.msgbox("insideif2")
                 break
+            #action2.send_keys(Keys.DOWN).perform()
         #self.driver.find_elements_by_xpath("(//*[@class='ant-select-selector'])[2]").click()
         #self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']").send_keys(Keys.ARROW_DOWN).send_keys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER)
 

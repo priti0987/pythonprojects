@@ -18,13 +18,12 @@ from Utilities.customLogger import LogGen
 
 myLogger = LogGen.logGen()
 
-@given(u'I launch the Khan Bank application in Ie')
+@given(u'I launch the Khan Bank Retail application in Ie')
 def step_impl(context):
     context.driver = webdriver.Ie()
     myLogger.info("*****Driver Initialized*****")
     global login_page
     login_page = Login(context.driver)
-    easygui.msgbox("loginIE")
     try:
 
         context.driver.get(Constants.RETAIL_URL)
@@ -32,16 +31,47 @@ def step_impl(context):
         login_page.clearDomain()
         login_page.setRetailDomain()
         login_page.clickOnDomainButton()
+        time.sleep(2)
         if context.driver.title == Constants.RETAIL_HOMEPAGE_TITLE:
             assert True
             context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
-            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage Displayed",
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank Retail LoginPage Displayed ",
                           attachment_type=AttachmentType.PNG)
             myLogger.info("*****Homepage title matches****")
         else:
             assert False
             context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
-            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank LoginPage Not Displayed",
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank Retail LoginPage Not Displayed",
+                          attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Homepage title does not match*****")
+    except:
+        #myLogger.exception("Error occured during execution: %s", e.message)
+        myLogger.info("*****Unable to launch the application")
+
+@given(u'I launch the Khan Bank Corporate application in Firefox')
+def step_impl(context):
+    context.driver = webdriver.Firefox()
+    myLogger.info("*****Driver Initialized*****")
+    global login_page
+    login_page = Login(context.driver)
+    try:
+
+        context.driver.get(Constants.RETAIL_URL)
+        context.driver.maximize_window()
+        login_page.clearDomain()
+        login_page.setRetailDomain()
+        login_page.clickOnDomainButton()
+        time.sleep(2)
+        if context.driver.title == Constants.CORPORATE_HOMEPAGE_TITLE:
+            assert True
+            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank CORPORATE LoginPage Displayed ",
+                          attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Homepage title matches****")
+        else:
+            assert False
+            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank CORPORATE LoginPage Not Displayed",
                           attachment_type=AttachmentType.PNG)
             myLogger.info("*****Homepage title does not match*****")
     except:
@@ -49,7 +79,9 @@ def step_impl(context):
         myLogger.info("*****Unable to launch the application")
 
 
-@given(u'I launch the Khan Bank application In Firefox')
+
+
+@given(u'I launch the Khan Bank Retail application in Firefox')
 def Firefox(context):
     context.driver = webdriver.Firefox()
     myLogger.info("*****Driver Initialized*****")
