@@ -1,16 +1,16 @@
-# This is a sample Python script.
+import openpyxl
+import easygui
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+data_sheet_path = "C:\\KhanBankApp\\TestData\\DataSheet.xlsx"
+workbook = openpyxl.load_workbook(data_sheet_path)
+sheet = workbook.get_sheet_by_name("Datasheet_Signup")
+rows=(sheet.max_row)
+col = (sheet.max_column)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for r in range(3, rows + 1):
+    R = sheet.cell(r,1)
+    E = sheet.cell(r,2)
+    P = sheet.cell(r,3)
+    print(R.value)
+    print(E.value)
+    print(P.value)

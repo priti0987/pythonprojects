@@ -10,6 +10,8 @@ class Constants:
     CORPORATE_DOMAIN = "https://doob.world:6474/v1"
     RETAIL_HOMEPAGE_TITLE = "ХААН Банк | Иргэд | Интернэт банк"
     CORPORATE_HOMEPAGE_TITLE = "ХААН Банк | Байгууллага | Интернэт банк"
+    Captured_message = "Customer needs to visit bank branch for making contract in order to use bank's digital channels."
+
 
 
 

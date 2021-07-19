@@ -35,7 +35,9 @@ class Login:
         #self.driver.find_element_by_xpath(self.link_signup_xpath).click()
 
 
-
+    def refreshPage(self):
+        #easygui.msgbox("refresh")
+        self.driver.refresh()
 
     def clearDomain(self):
         self.driver.find_element_by_xpath(self.text_domain_xpath).send_keys(Keys.CONTROL + "a")
