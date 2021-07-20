@@ -54,7 +54,7 @@ class Signup:
         action2 = ActionChains(self.driver)
         element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[1]")
         action2.move_to_element(element2).click().perform()
-        time.sleep(2)
+
         #self.driver.find_element_by_xpath("//*[text()='A']").click()
         i=1
         while i <=36 :
@@ -68,6 +68,7 @@ class Signup:
         action3 = ActionChains(self.driver)
         element3 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
         action3.move_to_element(element3).click().perform()
+        action3.send_keys(Keys.DOWN + Keys.ENTER).perform()
         i=1
         while i <=36 :
             action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
@@ -77,34 +78,29 @@ class Signup:
             i+=1
 
 
-    def selectDropdown2(self):
-        action2 = ActionChains(self.driver)
-        element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
-        action2.move_to_element(element2).click().perform()
-        Char2 = "Д"
-        for i in range(35):
-            action2.send_keys(Keys.DOWN ).perform()
-            data2 = self.driver.find_element_by_xpath("//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
-            #easygui.msgbox(data2.text)
-            if data2.text == Char2:
-                #easygui.msgbox("insideif2")
-                break
-            #action2.send_keys(Keys.DOWN).perform()
-        #self.driver.find_elements_by_xpath("(//*[@class='ant-select-selector'])[2]").click()
-        #self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']").send_keys(Keys.ARROW_DOWN).send_keys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER)
-
-        #value= self.driver.find_element_by_xpath(self.dropdown_reg2_value_xpath_Д)
-        #easygui.msgbox("Select Value from dropdown")
-        # self.driver.find_element_by_xpath(DropDown_Elements[1]).send_keys("Keys.DOWN +Keys.DOWN + Keys.ENTER")
 
     def enterReg_number(self,Reg_number):
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.CONTROL + "a")
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.DELETE)
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.CONTROL + "a")
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.DELETE)
+
         self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Reg_number)
 
-    def enterEmailid(self):
+    def enterValidSignUpdata(self):
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(self.reg_number_value)
         self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(self.emailid_value)
-
-    def enterPhone_number(self):
         self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(self.phone_number_value)
+
+    def enterEmailid(self,Emailid):
+        self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Keys.CONTROL + "a")
+        self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Keys.DELETE)
+        self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Emailid)
+
+    def enterPhone_number(self,Phone_number):
+        self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(Keys.CONTROL + "a")
+        self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(Keys.DELETE)
+        self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(Phone_number)
 
     def clickOn_ContinueButton(self):
         self.driver.find_element_by_xpath(self.continue_button_xpath).click()
@@ -141,3 +137,30 @@ class Signup:
                 break
             i += 1
 
+    def MyDropwonForIE(self, goto=None):
+        action2 = ActionChains(self.driver)
+        element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[1]")
+        action2.move_to_element(element2).click().perform()
+
+        self.driver.find_element_by_xpath("//*[text()='A']").click()
+        i=1
+        while i <=36 :
+            action2.send_keys(Keys.DOWN+Keys.ENTER).perform()
+            #easygui.msgbox("down?")
+            data = self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']")
+            if data.text == "Т":
+                break
+            i+=1
+        #*********************************Second dropdown
+        action3 = ActionChains(self.driver)
+        element3 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
+        action3.move_to_element(element3).click().perform()
+        action2.send_keys(Keys.TAB+ Keys.DOWN).perform()
+
+        i=1
+        while i <=36 :
+            action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
+            data3 = self.driver.find_element_by_xpath("//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
+            if data3.text == "З":
+                break
+            i+=1

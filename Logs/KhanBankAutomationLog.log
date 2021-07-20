@@ -1,12 +1,26 @@
-19-Jul-21 20:09:47 - *****Driver Initialized*****
-19-Jul-21 20:10:01 - *****Homepage title matches*****
-19-Jul-21 20:10:02 - *****Expected Element for sign up page Found in English Language*****
-19-Jul-21 20:10:05 - *****Expected Element for sign up page Found*****
-19-Jul-21 20:10:32 - *****Expected OTP Page is not found
-19-Jul-21 20:10:33 - Browser is closed
-gn up page Found*****
+20-Jul-21 20:43:00 - *****Driver Initialized*****
+20-Jul-21 20:43:10 - *****Homepage title matches****
+20-Jul-21 20:43:11 - *****Expected Element for sign up page Found in English Language*****
+20-Jul-21 20:43:12 - *****Expected Element for sign up page Found*****
+20-Jul-21 20:44:23 - The OTP Page is present
+20-Jul-21 20:48:29 - *****Expected OTP Page is Found*****
+20-Jul-21 20:48:37 - Browser is closed
+ound in English Language*****
+*****Expected Element for sign up page Found in English Language*****
+*****Expected Element for sign up page Found in English Language*****
 *****Expected Element for sign up page Found*****
-*****Expected OTP Page is not found
-*****Expected OTP Page is not found
+*****Expected Element for sign up page Found*****
+*****Expected Element for sign up page Found*****
+*****Expected Element for sign up page Found*****
+The OTP Page is present
+The OTP Page is present
+The OTP Page is present
+The OTP Page is present
+*****Expected OTP Page is Found*****
+*****Expected OTP Page is Found*****
+*****Expected OTP Page is Found*****
+*****Expected OTP Page is Found*****
+Browser is closed
+Browser is closed
 Browser is closed
 Browser is closed

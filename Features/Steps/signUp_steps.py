@@ -32,36 +32,6 @@ from selenium.common.exceptions import *
 
 myLogger = LogGen.logGen()
 
-@given(u'I launch the Khan Bank Retail application in Ie')
-def step_impl(context):
-    context.driver = webdriver.Ie()
-    myLogger.info("*****Driver Initialized*****")
-    global login_page
-    login_page = Login(context.driver)
-    try:
-
-        context.driver.get(Constants.RETAIL_URL)
-        context.driver.maximize_window()
-        login_page.clearDomain()
-        login_page.setRetailDomain()
-        login_page.clickOnDomainButton()
-        time.sleep(2)
-        if context.driver.title == Constants.RETAIL_HOMEPAGE_TITLE:
-            assert True
-            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
-            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank Retail LoginPage Displayed ",
-                          attachment_type=AttachmentType.PNG)
-            myLogger.info("*****Homepage title matches****")
-        else:
-            assert False
-            context.driver.save_screenshot(".\\Screenshots\\" + "LoginPage.png")
-            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank Retail LoginPage Not Displayed",
-                          attachment_type=AttachmentType.PNG)
-            myLogger.info("*****Homepage title does not match*****")
-    except:
-        #myLogger.exception("Error occured during execution: %s", e.message)
-        myLogger.info("*****Unable to launch the application")
-
 @given(u'I launch the Khan Bank Corporate application in Firefox')
 def step_impl(context):
     context.driver = webdriver.Firefox()
@@ -162,19 +132,22 @@ def Signup1(context):
 def Clicklanguage(context):
     global signup_page
     signup_page = Signup(context.driver)
-    #easygui.msgbox("Execution related popup?")
-    time.sleep(1)
-
-
     try:
         signup_page.ClickonLanguageLink()
         login_password_element = WebDriverWait(context.driver, 10).until(
-        EC.presence_of_element_located((By.XPATH,"//img[@src='/images/svg/signin/lang-mn.svg']")))
+        EC.presence_of_element_located((By.XPATH,"//a[@href='/auth/signup/step/1']")))
         assert True
-        context.driver.save_screenshot(".\\Screenshots\\" + "SelectPasswordPage.png")
-        allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank SignUp Page is in English Language",
-                      attachment_type=AttachmentType.PNG)
-        myLogger.info("*****Expected Element for sign up page Found in English Language*****")
+        if(context.driver.find_element(By.XPATH,"//a[normalize-space()='Sign Up']").is_displayed):
+            context.driver.save_screenshot(".\\Screenshots\\" + "SelectPasswordPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank SignUp Page is in English Language",
+                       attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Expected Element for sign up page Found in English Language*****")
+        elif(context.driver.find_element(By.XPATH,"//a[contains(text(),'Бүртгүүлэх')]").is_displayed):
+
+            context.driver.save_screenshot(".\\Screenshots\\" + "SelectPasswordPage.png")
+            allure.attach(context.driver.get_screenshot_as_png(), name="Khan Bank SignUp Page is in English Language",
+                       attachment_type=AttachmentType.PNG)
+            myLogger.info("*****Expected Element for sign up page Found in Mongolian Language*****")
 
     except Exception as e:
         myLogger.exception(e)
@@ -182,52 +155,114 @@ def Clicklanguage(context):
         myLogger.info("*****Expected Element for sign up page Not Found in English Language******")
 
 
-
-@when(u'Set Valid Drop Down Values')
-def step_impl(context):
+@when(u'Set Valid dropdown Values')
+def Validvaluesdropdown(context):
     global signup_page
     signup_page = Signup(context.driver)
     signup_page.MyDropwon()
 
+@when(u'Set Valid Values')
+def Validvalues(context):
+    global signup_page
+    signup_page = Signup(context.driver)
+    signup_page.MyDropwon()
+    signup_page.enterValidSignUpdata()
+    signup_page.clickOn_ContinueButton()
+    try:
+            time.sleep(8)
+            if(WebDriverWait(context.driver, 20).until(EC.presence_of_element_located(
+                            (By.XPATH, '//input[@id="otp"]'))).is_displayed()):
+                    myLogger.info("The OTP Page is present")
+
+                    context.driver.save_screenshot(".\\Screenshots\\" + "OTP_Page.png")
+                    allure.attach(context.driver.get_screenshot_as_png(),
+                          name="Khan Bank OTP Channel Selection Page Displayed",
+                        attachment_type=AttachmentType.PNG)
+                    myLogger.info("*****Expected OTP Page is Found*****")
+                    context.driver.find_element(By.CLASS_NAME, "ant-page-header-back-button").click()
+
+    except NoSuchElementException:
+                    myLogger.info("*****Expected OTP Page is not found")
+                    context.driver.save_screenshot(".\\Screenshots\\" + "IncorrectOTPPAGE.png")
+                    allure.attach(context.driver.get_screenshot_as_png(),
+                    name="Khan Bank OTP Channel Selection Page Not Displayed",
+                    attachment_type=AttachmentType.PNG)
+
+@when(u'Set ValidSignUpdata')
+def Validvalues(context):
+        global signup_page
+        signup_page = Signup(context.driver)
+
+        signup_page.enterValidSignUpdata()
+        signup_page.clickOn_ContinueButton()
+        try:
+            time.sleep(8)
+            if(WebDriverWait(context.driver, 20).until(EC.presence_of_element_located(
+                            (By.XPATH, '//input[@id="otp"]'))).is_displayed()):
+                    myLogger.info("The OTP Page is present")
+                    easygui.msgbox("page")
+
+                    context.driver.save_screenshot(".\\Screenshots\\" + "OTP_Page.png")
+                    allure.attach(context.driver.get_screenshot_as_png(),
+                          name="Khan Bank OTP Channel Selection Page Displayed",
+                        attachment_type=AttachmentType.PNG)
+                    myLogger.info("*****Expected OTP Page is Found*****")
+
+        except NoSuchElementException:
+                    myLogger.info("*****Expected OTP Page is not found")
+                    context.driver.save_screenshot(".\\Screenshots\\" + "IncorrectOTPPAGE.png")
+                    allure.attach(context.driver.get_screenshot_as_png(),
+                    name="Khan Bank OTP Channel Selection Page Not Displayed",
+                    attachment_type=AttachmentType.PNG)
+
+
 
 
 @when(u'Enter Input fields For signUp')
-def AAAstep_impl(context):
+def EnterFields(context):
+    global login_page
+    login_page = Login(context.driver)
+
     global signup_page
     signup_page = Signup(context.driver)
 
     data_sheet_path = "C:\\KhanBankApp\\TestData\\DataSheet.xlsx"
     rows = Utilities.excelUtils.getRowCount(data_sheet_path, "Datasheet_Signup")
 
+    for r in range(3, rows + 1):
+        #signup_page.MyDropwon()
+        Reg_number = Utilities.excelUtils.readData(data_sheet_path,"Datasheet_Signup",r ,1)
+        Emailid = Utilities.excelUtils.readData(data_sheet_path,"Datasheet_Signup",r,2)
+        Phone_number = Utilities.excelUtils.readData(data_sheet_path,"Datasheet_Signup",r,3)
+        signup_page.enterReg_number(Reg_number)
+        signup_page.enterEmailid(Emailid)
+        signup_page.enterPhone_number(Phone_number)
+        signup_page.clickOn_ContinueButton()
+        time.sleep(8)
+        try:
+            if(WebDriverWait(context.driver, 20).until(EC.presence_of_element_located(
+                                (By.XPATH, "//div[text()='Enter registration number']"))).is_displayed()):
+                myLogger.info("Enter registration number")
+                Utilities.excelUtils.writeData(data_sheet_path, "Datasheet_Signup", r, 5, "Test passes")
 
-    Reg_number = Utilities.excelUtils.readData(data_sheet_path,"Datasheet_Signup",3 ,1)
+            elif(WebDriverWait(context.driver, 20).until(EC.presence_of_element_located(
+                                (By.XPATH, "//button[@id='email']"))).is_displayed()):
 
-    signup_page.enterReg_number(Reg_number)
-    signup_page.enterEmailid()
-    signup_page.enterPhone_number()
-    signup_page.clickOn_ContinueButton()
-    try:
-        time.sleep(3)
-        if (context.driver.find_element(By.XPATH,"//input[@id='otp']").is_displayed()):
-        # email_radio_button = context.driver.find_element(By.XPATH, "//input[@value='EMAIL']")
-            myLogger.info("The OTP Page is present")
+                myLogger.info("Invalid Email id")
+                Utilities.excelUtils.writeData(data_sheet_path, "Datasheet_Signup", r, 5, "test passes")
+            elif (WebDriverWait(context.driver, 30).until(EC.presence_of_element_located(
+                    (By.XPATH, "//button[@id='otp']"))).is_displayed()):
+                easygui.msgbox("otppage")
+                myLogger.info("OTP Page")
+                Utilities.excelUtils.writeData(data_sheet_path, "Datasheet_Signup", r, 5, "test passes")
 
-            Utilities.excelUtils.writeData(data_sheet_path, "Datasheet_Signup", 3, 5, "Test Passed")
-            context.driver.save_screenshot(".\\Screenshots\\" + "CorrectForeignDataForSPWD.png")
-            allure.attach(context.driver.get_screenshot_as_png(),
-                      name="Khan Bank OTP Channel Selection Page Displayed",
-                      attachment_type=AttachmentType.PNG)
-            myLogger.info("*****Expected Element Email Radio Button is Found*****")
-            context.driver.find_element(By.CLASS_NAME, "ant-page-header-back-button").click()
+        except:
+                easygui.msgbox("exp")
+                myLogger.info("*****Popup*****")
+                error_popup_close_button = WebDriverWait(context.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, "//button[@class='kb-button with-bordered']")))
+                error_popup_close_button.click()
 
-    except NoSuchElementException:
-        myLogger.info("*****Expected OTP Page is not found")
-        Utilities.excelUtils.writeData(data_sheet_path, "Datasheet_Signup", 3, 5, "Test Failed")
-    context.driver.save_screenshot(".\\Screenshots\\" + "IncorrectForeignDataForSPWD.png")
-    allure.attach(context.driver.get_screenshot_as_png(),
-                  name="Khan Bank OTP Channel Selection Page Not Displayed",
-                  attachment_type=AttachmentType.PNG)
-    # time.sleep(2)
 
 @then(u'Click on Continue button')
 def continuebuttn(context):
@@ -261,11 +296,8 @@ def continuebuttn(context):
      #context.driver.find_element_by_xpath("//input[@id='email']").send_keys("Priti@domain.com")
      #context.driver.find_element_by_xpath("//input[@id='phoneNumber']").send_keys("100")
 
-
-
-
 @then(u'I close the browser')
-def step_impl(context):
+def step_impl_Close(context):
     context.driver.close()
     myLogger.info("Browser is closed")
 
