@@ -1,3 +1,5 @@
+import time
+
 import easygui
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -29,10 +31,10 @@ class Login:
 
 
     def clickOnSignupLink(self):
-        wait = WebDriverWait(self.driver, 10)
+        self.driver.refresh()
+        wait = WebDriverWait(self.driver, 30)
         SignupLink = wait.until(EC.element_to_be_clickable((By.XPATH, self.link_signup_xpath)))
         SignupLink.click()
-        #self.driver.find_element_by_xpath(self.link_signup_xpath).click()
 
 
     def refreshPage(self):
@@ -45,12 +47,13 @@ class Login:
 
     def setRetailDomain(self):
         self.driver.find_element_by_xpath(self.text_domain_xpath).send_keys(Constants.RETAIL_DOMAIN)
-
+        time.sleep(5)
     def setCorporateDomain(self):
         self.driver.find_element_by_xpath(self.text_domain_xpath).send_keys(Constants.CORPORATE_DOMAIN)
+
     def clickOnDomainButton(self):
         self.driver.find_element_by_xpath(self.button_domain_xpath).click()
-
+        time.sleep(2)
     def setLanguage(self):
         self.driver.find_element_by_xpath(self.link_language_xpath).click()
     def setUserName(self, username):

@@ -1,0 +1,15 @@
+
+  Scenario: To Check FieldLevelValidation InValid Data For Signup Khan Bank Corporate Envirnoment In English Language in Firefox
+    Given I launch the Khan Bank Corporate application in Firefox
+     When I Click on Language Link
+      And I Click on SignUp link in Firefox
+      And I select dropdown Values for Firefox
+      And I Enter Input fields For signup PageDD In English Language
+     Then I close the browser
+
+  Scenario: To Check FieldLevelValidation InValid Data For Signup Khan Bank Corporate Envirnoment In Mongolian Language in Firefox
+    Given I launch the Khan Bank Corporate application in Firefox
+     When I Click on SignUp link in Firefox
+      And I select dropdown Values for Firefox
+      And I Enter Input fields For signup PageDD In English Language
+     Then I close the browser

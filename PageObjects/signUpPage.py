@@ -10,9 +10,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.select import *
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
-
+import Utilities
 
 class Signup:
 
@@ -31,7 +29,6 @@ class Signup:
     phone_number_value = "88131370"
     continue_button_xpath="//button[@class='ant-btn ant-btn-primary ant-btn-lg ant-btn-block']"
 
-    #easygui.msgbox(rows)
     def __init__(self, driver):
         self.driver = driver
 
@@ -77,8 +74,6 @@ class Signup:
                 break
             i+=1
 
-
-
     def enterReg_number(self,Reg_number):
         self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.CONTROL + "a")
         self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Keys.DELETE)
@@ -87,12 +82,15 @@ class Signup:
 
         self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Reg_number)
 
-    def enterValidSignUpdata(self):
-        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(self.reg_number_value)
-        self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(self.emailid_value)
-        self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(self.phone_number_value)
+    def enterValidSignUpdata(self,Reg_number,Emailid,Phone_number):
+
+
+        self.driver.find_element_by_xpath(self.reg_number_xpath).send_keys(Reg_number)
+        self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Emailid)
+        self.driver.find_element_by_xpath(self.phone_number_xpath).send_keys(Phone_number)
 
     def enterEmailid(self,Emailid):
+
         self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Keys.CONTROL + "a")
         self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Keys.DELETE)
         self.driver.find_element_by_xpath(self.emailid_xpath).send_keys(Emailid)
@@ -107,7 +105,6 @@ class Signup:
 
     def ClickonLanguageLink(self):
         self.driver.find_element_by_xpath(self.language_button_xpath).click()
-
 
     def CheckAllCharatorsfromDropdown(self):
         action2 = ActionChains(self.driver)
@@ -156,7 +153,6 @@ class Signup:
         element3 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
         action3.move_to_element(element3).click().perform()
         action2.send_keys(Keys.TAB+ Keys.DOWN).perform()
-
         i=1
         while i <=36 :
             action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
@@ -164,3 +160,38 @@ class Signup:
             if data3.text == "З":
                 break
             i+=1
+
+    def MyDropwonDD(self,DropD1,Dropd2):
+        action2 = ActionChains(self.driver)
+        element2 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[1]")
+        action2.move_to_element(element2).click().perform()
+        D_1=str(DropD1)
+        D_2 = str(Dropd2)
+        action2.send_keys(Keys.DOWN + Keys.ENTER).perform()
+        i = 1
+        while i <= 36:
+            action2.send_keys(Keys.DOWN + Keys.ENTER).perform()
+                # easygui.msgbox("down?")
+            data = self.driver.find_element_by_xpath("//span[@class='ant-select-selection-item']")
+            if data.text == D_1:
+               break
+            i += 1
+            # *********************************Second dropdown
+        action3 = ActionChains(self.driver)
+        element3 = self.driver.find_element_by_xpath("(//div[@class='ant-select-selector'])[2]")
+        action3.move_to_element(element3).click().perform()
+        action3.send_keys(Keys.DOWN+Keys.ENTER).perform()
+        #action2.send_keys(Keys.TAB + Keys.DOWN).perform()
+
+        i = 1
+        while i <= 36:
+            action3.send_keys(Keys.DOWN + Keys.ENTER).perform()
+            data3 = self.driver.find_element_by_xpath(
+              "//input[@aria-owns='rc_select_1_list']//parent::span//following::span[@class='ant-select-selection-item']")
+            if data3.text == D_2:
+                break
+            i += 1
+
+    def OTP_Page(self):
+        easygui.msgbox("otppage")
+
